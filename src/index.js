@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import './index.scss';
+// import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import store from './store/store.js';
+import './assets/css/animate.min.css';
+import './assets/font-awesome-4.7.0/css/font-awesome.min.css';
+import './assets/js/rem.js';
+import './assets/css/reset.css'
+import BasicRoute from './Router.js';
+import axios from 'axios';
+import 'swiper/dist/css/swiper.min.css';
+import jsCookie from 'js-cookie';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+React.Component.prototype.$axios = axios;
+React.Component.prototype.$cookie = jsCookie;
+
+
+ReactDOM.render(<Provider store={store}><BasicRoute></BasicRoute></Provider> ,document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// serviceWorker.unregister();
